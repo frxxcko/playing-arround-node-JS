@@ -5,10 +5,10 @@ const notesPath = 'notes.json';
 
 const log = console.log;
 
-const getNotes = () => "Your notes..."
+const getNotes = () => "Your notes...";
 
 const addNote = (title, body) => {
-    const notesJSON = fs.readFileSync('notes.json', { encoding: "utf-8"}) || [];
+    const notesJSON = fs.readFileSync(notesPath, { encoding: "utf-8"}) || [];
     
     const NOTE = {
         title: title,
@@ -29,6 +29,11 @@ const addNote = (title, body) => {
         fs.writeFileSync(notesPath, JSON.stringify(notesParsed));
         log(chalk.green.inverse('Note added to the list.'));
     }
-} 
+}
 
-module.exports = { getNotes, addNote };
+const listAll = () => {
+    const notesJSON = fs.readFileSync(notesPath, { encoding: "utf-8" });
+    if(notesJSON) console.table(JSON.parse(notesJSON));
+}
+
+module.exports = { getNotes, addNote, listAll };
