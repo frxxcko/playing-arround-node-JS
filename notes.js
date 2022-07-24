@@ -1,9 +1,9 @@
 const fs = require('fs')
 const validator = require('validator')
 const chalk = require('chalk')
-const notesPath = 'notes.json';
+const notesPath = 'notes.json'
 const log = console.log;
-const notesJSON = fs.readFileSync(notesPath, { encoding: "utf-8" });
+const notesJSON = fs.readFileSync(notesPath, { encoding: "utf-8" })
 
 const getNoteByTitle = (title) => console.table(Array(JSON.parse(notesJSON).find( note => note.title = title)));
 
