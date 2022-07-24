@@ -43,7 +43,7 @@ const addNote = (title, body) => {
     saveNotes(notes);
 }
 
-const getNoteByTitle = (title) => log(notesJSON.find(note => note.title = title));
+const getNoteByTitle = (title) => log(getAllNotes().find(note => note.title = title));
 
 const listAll = () => getAllNotes().length > 0? console.table(getAllNotes()) : log(chalk.red("No notes were found, to add a note run app.js and execute 'add' command followed by a title and a body"))
 
