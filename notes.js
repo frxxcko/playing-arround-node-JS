@@ -22,12 +22,11 @@ const addNote = (title, body) => {
         return;
     }
 
-    const NOTE = {
+    notes.push({
         title: title.trim(),
         body: body.trim()
-    };
-
-    notes.push(NOTE);
+    });
+    
     fs.writeFileSync(notesPath, JSON.stringify(notes));
     log(chalk.green('Note added to the list'));
 }
