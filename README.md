@@ -1,4 +1,6 @@
-<h1>Playing arround with Node JS</h1>
+<h1>Simple console NodeJS app</h1>
+
+<h2>How to use this console app</h2> 
 
 <h2>NodeJS Notes</h2>
 
