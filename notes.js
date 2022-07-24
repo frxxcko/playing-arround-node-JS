@@ -5,7 +5,7 @@ const notesPath = 'notes.json';
 const log = console.log;
 const notesJSON = fs.readFileSync(notesPath, { encoding: "utf-8" });
 
-const getNotes = () => "Your notes...";
+const getNoteByTitle = (title) => console.table(Array(JSON.parse(notesJSON).find( note => note.title = title)));
 
 const addNote = (title, body) => {
     const notes = notesJSON || [];
@@ -56,4 +56,4 @@ const removeNote = (title) => {
     log(chalk.red("Please check if provided Title exists or it is well written"))
 }
 
-module.exports = { getNotes, addNote, listAll, removeNote};
+module.exports = { getNoteByTitle, addNote, listAll, removeNote };
