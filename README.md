@@ -92,5 +92,5 @@ node app.js get --title="Note title"
 
 In this project I wanted to mess arround with Node JS, this is just a very simple project.
 
-This is the begin of my journey as I create more and more little projects to later build a fully functional backend. 
+This is the begin of my journey as I create more and more little projects to later build a fully functional backend with NodeJS. 
 But it's a long journey so grab a cup of your favourite beverage and reach out whenever you feel like!
