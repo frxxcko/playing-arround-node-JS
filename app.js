@@ -1,6 +1,6 @@
-const yargs = require('yargs')
-const { argv } = require('yargs')
-const validator = require('validator')
+const yargs = require('yargs');
+const { argv } = require('yargs');
+const validator = require('validator');
 const notes = require('./notes');
 const { default: chalk } = require('chalk');
 const log = console.log;
