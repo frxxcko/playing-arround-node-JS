@@ -49,9 +49,10 @@ const listAll = () => getAllNotes().length > 0? console.table(getAllNotes()) : l
 
 const removeNote = (title) => {
     const notes = getAllNotes();
-    if (notes.find(note => note.title === title)) {
+    if (notes.find(note => note.title === title)) 
+    {
         const filteredNotes = notes.filter(note => note.title !== title);
-        fs.writeFileSync(notesPath, JSON.stringify(filteredNotes));
+        saveNotes(filteredNotes)
         log(chalk.red(`Note titled "${title}" has been removed`));
         return;
     }
