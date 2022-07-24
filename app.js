@@ -45,7 +45,21 @@ yargs.command({
             type: "string"
         }
     }
+})
 
+yargs.command({
+    command: "get",
+    describe: "Get Note by it's title",
+    handler: function(title) {
+        notes.getNoteByTitle(argv.title);
+    },
+    builder: {
+        title: {
+            describe: "Provide a Title to retrieve it from the list",
+            demandOption: true,
+            type: "string"
+        }
+    }
 })
 
 yargs.parse()
