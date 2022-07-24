@@ -1,17 +1,14 @@
-const validator = require('validator')
-const chalk = require('chalk')
-const yargs = require('yargs');
-const { argv } = require('yargs');
+const yargs = require('yargs')
+const { argv } = require('yargs')
+const notes = require('./notes')
 
-const log = console.log;
 
 
 yargs.command({
     command: 'add',
     describe: 'Add a note',
     handler: function() {
-        log(`Title: ${chalk.green.inverse(argv.title)}\nBody:  ${chalk.green.inverse(argv.body)}`)
-
+        notes.addNote(argv.title, argv.body);
     },
     builder: {
         title: {
@@ -28,10 +25,10 @@ yargs.command({
 })
 
 yargs.command({
-    command: 'read',
-    describe: 'Reads all notes',
+    command: 'list',
+    describe: 'Lists all notes',
     handler: function () {
-        log('Reading all notes...')
+        notes.listAll();
     }
 })
 
