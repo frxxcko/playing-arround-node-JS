@@ -4,7 +4,7 @@ const chalk = require('chalk');
 const notesPath = 'notes.json';
 const log = console.log;
 
-const getAll = () => {
+const getAllNotes = () => {
     try {
         const notesJSON = fs.readFileSync(notesPath, { encoding: "utf-8" });
         return JSON.parse(notesJSON);
@@ -14,8 +14,21 @@ const getAll = () => {
     }
 }
 
+const saveNotes = (notes) => {
+    try
+    {
+        const stringifiedNotes = JSON.stringify(notes);
+        fs.writeFileSync(notesPath, stringifiedNotes);
+        log(chalk.green('Note added to the list'));
+    }
+    catch(e)
+    {
+        log(chalk.red(e.message))
+    }
+} 
+
 const addNote = (title, body) => {
-    const notes = getAll();
+    const notes = getAllNotes();
     
     if (notes.find( note => note.title === title.trim())) {
         log(chalk.red("Note already added"))
@@ -26,19 +39,16 @@ const addNote = (title, body) => {
         title: title.trim(),
         body: body.trim()
     });
-    
-    fs.writeFileSync(notesPath, JSON.stringify(notes));
-    log(chalk.green('Note added to the list'));
+
+    saveNotes(notes);
 }
 
 const getNoteByTitle = (title) => console.table(Array(JSON.parse(notesJSON).find(note => note.title = title)));
 
-const listAll = () => {
-    if (notesJSON) console.table(JSON.parse(notesJSON));
-}
+const listAll = () => getAllNotes().length > 0? console.table(getAllNotes()) : log(chalk.red("No notes were found, to add a note run app.js and execute 'add' command followed by a title and a body"))
 
 const removeNote = (title) => {
-    const notes = getAll();
+    const notes = getAllNotes();
     if (notes.find(note => note.title === title)) {
         const filteredNotes = notes.filter(note => note.title !== title);
         fs.writeFileSync(notesPath, JSON.stringify(filteredNotes));
